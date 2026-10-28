@@ -1,0 +1,40 @@
+﻿* 41bb84f t1: regression test, hardcode action-primary and change brand colour
+* 2b9d123 t1: prove design system use with typography answer and raw value search
+* d150226 t1: prove design system use with typography answer and raw value search
+* 21bc578 t1: record Stage A, Stage B and font fix prompts
+* 300c2e3 t1: document colour roles, type scale and defects
+* cb71fcd t1: build order screen without design system
+* 7610692 t1: record type scale prompt
+* f5c766f t1: add colour vision evidence, type scale reasoning and colour roles
+* 97921ea t1: add colour vision simulation evidence
+* a56335d t1: document colour roles and secondary container defect
+* 3bd3feb t1: record converter and contrast audit prompts
+* 8c11aa2 t1: add full colour contrast audit and script
+* a4ad284 t1: record shadow and contrast defects
+* 7498d48 t1: add raw colour value search placeholder
+* 057c321 t1: document shadows, dark mode finding and divergences
+* fc4c0e6 t1: add token converter, checker and generated css
+* 27662df t1: add incomplete and complete token exports
+* 6f36d85 t1: add palette and letter spacing evidence images
+* 7ddf4cf t1: add AsoHub business brief
+* 360c3b3 chore: add repository skeleton for five task folders
+--- after deleting regression-test ---
+* 2b9d123 t1: prove design system use with typography answer and raw value search
+* d150226 t1: prove design system use with typography answer and raw value search
+* 21bc578 t1: record Stage A, Stage B and font fix prompts
+* 300c2e3 t1: document colour roles, type scale and defects
+* cb71fcd t1: build order screen without design system
+* 7610692 t1: record type scale prompt
+* f5c766f t1: add colour vision evidence, type scale reasoning and colour roles
+* 97921ea t1: add colour vision simulation evidence
+* a56335d t1: document colour roles and secondary container defect
+* 3bd3feb t1: record converter and contrast audit prompts
+* 8c11aa2 t1: add full colour contrast audit and script
+* a4ad284 t1: record shadow and contrast defects
+* 7498d48 t1: add raw colour value search placeholder
+* 057c321 t1: document shadows, dark mode finding and divergences
+* fc4c0e6 t1: add token converter, checker and generated css
+* 27662df t1: add incomplete and complete token exports
+* 6f36d85 t1: add palette and letter spacing evidence images
+* 7ddf4cf t1: add AsoHub business brief
+* 360c3b3 chore: add repository skeleton for five task folders
