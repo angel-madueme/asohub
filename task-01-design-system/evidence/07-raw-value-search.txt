@@ -1,0 +1,6 @@
+﻿node task-01-design-system/scripts/check-token-usage.mjs
+Exact searches:
+  /--ref-color-[a-z0-9-]+/gi
+  /#[0-9a-f]{3,8}\b/gi
+  /\b(?:rgba?|hsla?)\s*\(/gi
+Token usage check passed: no primitive color references or raw color values found outside asohub-tokens.css.
