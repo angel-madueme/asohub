@@ -1,4 +1,4 @@
-# Prompts
+﻿# Prompts
 
 ## Prompt 1: JSON to CSS token converter
 
@@ -166,7 +166,7 @@ The agent created `docs/type-scale.md` and `docs/type-scale.csv`. It parsed 15 s
 
 ### How I checked it
 
-The one-line command was rerun on my machine and its output saved to `evidence/type-scale-run.txt`. The Display Large values (48px, -0.60px, 67.2px) match `divergences.md`.
+The one-line command is recorded in `docs/type-scale.md` with its output. The Display Large values (48px, -0.60px, 67.2px) match `divergences.md`.
 
 ### What I found and noted
 
@@ -215,3 +215,4 @@ I searched `asohub-tokens.css` for the 15 hex values and none matched, so the ag
 
 - My first screenshot was cropped and about 330 px wide, so I retook it at 390 px.
 - The invented content (order number, amounts, 2024 dates) is demo data, not
+
