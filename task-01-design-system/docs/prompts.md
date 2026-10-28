@@ -173,3 +173,45 @@ The one-line command was rerun on my machine and its output saved to `evidence/t
 - The CSS font family is `'Source Sans Pro'`. Google Fonts now publishes this family as "Source Sans 3", so the font may fail to load by that name. Logged in `defects.md`, entry 6, to verify in Task 2.
 - The Material baseline rows come from my prompt, not from Material's source. They are reference-only.
 - The agent produced numbers but no reasoning. The reasons for each multiplier and tracking value were added to `type-scale.md` by hand.
+
+
+## Prompt 4: Stage A, order screen without the design system
+
+Date: 2026-10-28
+Agent and model: Codex running in the Antigravity terminal, GPT-5.6-Luna medium
+
+### Prompt as sent
+
+```
+We are working on Task 01, Step 7 of the AsoHub assessment: proving the agent uses the design system. This is Stage A.
+
+LOCATION: Work only inside task-01-design-system/. Do not run any git commands. Do not install packages or use a framework. Plain HTML and CSS only.
+
+DO NOT read, open or use any of these in Stage A: src/styles/asohub-tokens.css, evidence/06-tokens-complete.json, docs/colour-roles.md, docs/type-scale.md. This stage deliberately has no design system.
+
+TASK: Build one mobile-first screen, "Order detail", for a made-to-measure tailoring studio app called AsoHub. Content:
+- Header with the AsoHub name
+- Order title: "Agbada, two piece" with a status badge "In progress"
+- Promised date: "Ready by 14 November"
+- A balance card: Total, Paid, Still owed
+- A payment history list with three rows (date, amount, status: Paid, Paid, Failed)
+- One primary button: "Pay balance"
+Make it look good. Use your own judgement for colours, fonts and spacing.
+
+Save as task-01-design-system/demo/without-system/index.html (one file, CSS inside).
+
+REPORT: files created, and the fonts and colours you chose (list every hex you used). Do not claim it follows any design system.
+```
+
+### What happened
+
+The agent created `demo/without-system/index.html`. It chose Georgia for headings and Trebuchet MS for interface text, and used 15 hex colours of its own, including a terracotta card (`#b85d3e`) and a near-black button (`#24211d`). It did not claim to follow any design system. It added details I never asked for: an order number (#ASO-1048), a menu button, a sparkle icon and dates in 2024.
+
+### How I checked it
+
+I searched `asohub-tokens.css` for the 15 hex values and none matched, so the agent did not borrow from my tokens. I captured the page at 390 px as `evidence/09-screen-without-system.png`. The brand olive `#727C3D` appears nowhere on this screen. Status used a dot plus text, so the agent avoided colour-only status without being told.
+
+### What did not work, and what I noted
+
+- My first screenshot was cropped and about 330 px wide, so I retook it at 390 px.
+- The invented content (order number, amounts, 2024 dates) is demo data, not
