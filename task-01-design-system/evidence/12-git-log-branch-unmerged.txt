@@ -38,3 +38,10 @@
 * 6f36d85 t1: add palette and letter spacing evidence images
 * 7ddf4cf t1: add AsoHub business brief
 * 360c3b3 chore: add repository skeleton for five task folders
+
+2b9d123 HEAD@{2026-10-28 14:59:54 +0100}: checkout: moving from regression-test 
+to main
+2b9d123 HEAD@{2026-10-28 14:52:19 +0100}: checkout: moving from main to 
+regression-test
+
+
