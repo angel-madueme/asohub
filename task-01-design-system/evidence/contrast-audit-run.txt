@@ -1,0 +1,7 @@
+﻿Roles parsed: Light 66, Dark 66 (total 132 leaf colour roles)
+Pairs tested: 40
+Failing normal-text pairs: 0
+Failing large-text pairs: 0
+Low-margin pairs (<4.6:1): 3
+Original 102-pair list: not found
+UI component verification: none; no UI exists yet
