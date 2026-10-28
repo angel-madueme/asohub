@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AsoHub — Order detail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/asohub-tokens.css">
+  <style>
+    @font-face {
+      font-family: 'Source Sans Pro';
+      src: local('Source Sans 3'), url('https://fonts.gstatic.com/s/sourcesans3/v20/nwpStKy2OAdR1K-IwhWudF-R3w8aZQ.woff2') format('woff2');
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Source Sans Pro';
+      src: local('Source Sans 3'), url('https://fonts.gstatic.com/s/sourcesans3/v20/nwpStKy2OAdR1K-IwhWudF-R3w8aZQ.woff2') format('woff2');
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+    }
+
+    :root {
+      color-scheme: light;
+    }
+
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--color-background);
+      color: var(--color-on-background);
+      font-family: var(--type-body-medium-fontfamily);
+      font-size: var(--type-body-medium-fontsize);
+      font-weight: var(--type-body-medium-fontweight);
+      letter-spacing: var(--type-body-medium-letterspacing);
+      line-height: var(--type-body-medium-lineheight);
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .shell {
+      width: min(calc(100% - 32px), 560px);
+      margin: 0 auto;
+      padding: 24px 0 40px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 42px;
+    }
+
+    .brand {
+      color: var(--color-primary);
+      font-family: var(--type-title-large-fontfamily);
+      font-size: var(--type-title-large-fontsize);
+      font-weight: var(--type-title-large-fontweight);
+      letter-spacing: var(--type-title-large-letterspacing);
+      line-height: var(--type-title-large-lineheight);
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 36px;
+      padding: 6px 10px;
+      border: 1px solid var(--color-outline-variant);
+      border-radius: 999px;
+      background: var(--color-surface);
+      color: var(--color-on-surface);
+      font-family: var(--type-label-small-fontfamily);
+      font-size: var(--type-label-small-fontsize);
+      font-weight: var(--type-label-small-fontweight);
+      letter-spacing: var(--type-label-small-letterspacing);
+      line-height: var(--type-label-small-lineheight);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--color-primary);
+      font-family: var(--type-label-small-fontfamily);
+      font-size: var(--type-label-small-fontsize);
+      font-weight: var(--type-label-small-fontweight);
+      letter-spacing: var(--type-label-small-letterspacing);
+      line-height: var(--type-label-small-lineheight);
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 390px;
+      margin-bottom: 14px;
+      color: var(--color-on-surface);
+      font-family: var(--type-display-small-fontfamily);
+      font-size: var(--type-display-small-fontsize);
+      font-weight: var(--type-display-small-fontweight);
+      letter-spacing: var(--type-display-small-letterspacing);
+      line-height: var(--type-display-small-lineheight);
+    }
+
+    .order-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      color: var(--color-secondary-text);
+      font-family: var(--type-body-small-fontfamily);
+      font-size: var(--type-body-small-fontsize);
+      font-weight: var(--type-body-small-fontweight);
+      letter-spacing: var(--type-body-small-letterspacing);
+      line-height: var(--type-body-small-lineheight);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--color-success-container);
+      color: var(--color-on-success-container);
+      font-family: var(--type-label-medium-fontfamily);
+      font-size: var(--type-label-medium-fontsize);
+      font-weight: var(--type-label-medium-fontweight);
+      letter-spacing: var(--type-label-medium-letterspacing);
+      line-height: var(--type-label-medium-lineheight);
+    }
+
+    .status-symbol {
+      color: var(--color-success);
+    }
+
+    .section {
+      margin-top: 34px;
+    }
+
+    .balance-card {
+      overflow: hidden;
+      border-radius: 22px;
+      background: var(--color-primary);
+      color: var(--color-on-primary);
+      box-shadow: var(--elevation-medium);
+    }
+
+    .balance-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 22px 22px 18px;
+    }
+
+    .balance-head p {
+      margin-bottom: 3px;
+      opacity: 0.78;
+      font-family: var(--type-label-small-fontfamily);
+      font-size: var(--type-label-small-fontsize);
+      font-weight: var(--type-label-small-fontweight);
+      letter-spacing: var(--type-label-small-letterspacing);
+      line-height: var(--type-label-small-lineheight);
+    }
+
+    .balance-amount {
+      font-family: var(--type-title-large-fontfamily);
+      font-size: var(--type-title-large-fontsize);
+      font-weight: var(--type-title-large-fontweight);
+      letter-spacing: var(--type-title-large-letterspacing);
+      line-height: var(--type-title-large-lineheight);
+    }
+
+    .balance-mark {
+      color: var(--color-on-primary);
+      font-family: var(--type-title-large-fontfamily);
+      font-size: var(--type-title-large-fontsize);
+      font-weight: var(--type-title-large-fontweight);
+      letter-spacing: var(--type-title-large-letterspacing);
+      line-height: var(--type-title-large-lineheight);
+    }
+
+    .balance-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--color-on-primary);
+    }
+
+    .balance-grid div {
+      padding: 16px 12px 18px 22px;
+    }
+
+    .balance-grid div + div {
+      border-left: 1px solid var(--color-on-primary);
+    }
+
+    .balance-grid span {
+      display: block;
+      margin-bottom: 4px;
+      opacity: 0.78;
+      font-family: var(--type-label-small-fontfamily);
+      font-size: var(--type-label-small-fontsize);
+      font-weight: var(--type-label-small-fontweight);
+      letter-spacing: var(--type-label-small-letterspacing);
+      line-height: var(--type-label-small-lineheight);
+    }
+
+    .balance-grid b {
+      font-family: var(--type-title-small-fontfamily);
+      font-size: var(--type-title-small-fontsize);
+      font-weight: var(--type-title-small-fontweight);
+      letter-spacing: var(--type-title-small-letterspacing);
+      line-height: var(--type-title-small-lineheight);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      color: var(--color-on-surface);
+      font-family: var(--type-headline-small-fontfamily);
+      font-size: var(--type-headline-small-fontsize);
+      font-weight: var(--type-headline-small-fontweight);
+      letter-spacing: var(--type-headline-small-letterspacing);
+      line-height: var(--type-headline-small-lineheight);
+    }
+
+    .count {
+      color: var(--color-secondary-text);
+      font-family: var(--type-label-small-fontfamily);
+      font-size: var(--type-label-small-fontsize);
+      font-weight: var(--type-label-small-fontweight);
+      letter-spacing: var(--type-label-small-letterspacing);
+      line-height: var(--type-label-small-lineheight);
+    }
+
+    .payments {
+      overflow: hidden;
+      border: 1px solid var(--color-outline-variant);
+      border-radius: 18px;
+      background: var(--color-surface);
+      box-shadow: var(--elevation-soft);
+    }
+
+    .payment {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4px 16px;
+      align-items: center;
+      padding: 16px 18px;
+    }
+
+    .payment + .payment {
+      border-top: 1px solid var(--color-divider);
+    }
+
+    .payment-amount {
+      color: var(--color-on-surface);
+      font-family: var(--type-title-small-fontfamily);
+      font-size: var(--type-title-small-fontsize);
+      font-weight: var(--type-title-small-fontweight);
+      letter-spacing: var(--type-title-small-letterspacing);
+      line-height: var(--type-title-small-lineheight);
+    }
+
+    .payment-date {
+      color: var(--color-secondary-text);
+      font-family: var(--type-body-small-fontfamily);
+      font-size: var(--type-body-small-fontsize);
+      font-weight: var(--type-body-small-fontweight);
+      letter-spacing: var(--type-body-small-letterspacing);
+      line-height: var(--type-body-small-lineheight);
+    }
+
+    .payment-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: var(--color-success-container);
+      color: var(--color-on-success-container);
+      font-family: var(--type-label-medium-fontfamily);
+      font-size: var(--type-label-medium-fontsize);
+      font-weight: var(--type-label-medium-fontweight);
+      letter-spacing: var(--type-label-medium-letterspacing);
+      line-height: var(--type-label-medium-lineheight);
+    }
+
+    .payment-status.failed {
+      background: var(--color-error-container);
+      color: var(--color-on-error-container);
+    }
+
+    .payment-icon {
+      color: var(--color-success);
+    }
+
+    .payment-status.failed .payment-icon {
+      color: var(--color-error);
+    }
+
+    .pay-button {
+      width: 100%;
+      margin-top: 28px;
+      padding: 16px 20px;
+      border-radius: 14px;
+      background: var(--color-action-primary);
+      color: var(--color-action-on-primary);
+      box-shadow: var(--elevation-soft);
+      font-family: var(--type-label-large-fontfamily);
+      font-size: var(--type-label-large-fontsize);
+      font-weight: var(--type-label-large-fontweight);
+      letter-spacing: var(--type-label-large-letterspacing);
+      line-height: var(--type-label-large-lineheight);
+    }
+
+    .pay-button:focus-visible,
+    .theme-toggle:focus-visible {
+      outline: 3px solid var(--color-outline);
+      outline-offset: 3px;
+    }
+
+    @media (min-width: 520px) {
+      .shell {
+        padding-top: 32px;
+      }
+
+      .topbar {
+        margin-bottom: 60px;
+      }
+
+      .balance-grid div {
+        padding-right: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <span class="brand">AsoHub</span>
+      <button class="theme-toggle" type="button" aria-pressed="false">☼ <span>Dark mode</span></button>
+    </header>
+
+    <section aria-labelledby="order-title">
+      <p class="eyebrow">Order detail · #ASO-1048</p>
+      <h1 id="order-title">Agbada, two piece</h1>
+      <div class="order-meta">
+        <span class="status-badge"><span class="status-symbol" aria-hidden="true">●</span>In progress</span>
+        <span>Ready by 14 November</span>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="balance-title">
+      <div class="balance-card">
+        <div class="balance-head">
+          <div>
+            <p id="balance-title">Your balance</p>
+            <strong class="balance-amount">₦85,000</strong>
+          </div>
+          <span class="balance-mark" aria-hidden="true">✦</span>
+        </div>
+        <div class="balance-grid">
+          <div><span>Total</span><b>₦250,000</b></div>
+          <div><span>Paid</span><b>₦165,000</b></div>
+          <div><span>Still owed</span><b>₦85,000</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="payments-title">
+      <div class="section-title">
+        <h2 id="payments-title">Payment history</h2>
+        <span class="count">3 payments</span>
+      </div>
+      <div class="payments">
+        <div class="payment">
+          <div><div class="payment-amount">₦100,000</div><div class="payment-date">12 September 2024</div></div>
+          <div class="payment-status"><span class="payment-icon" aria-hidden="true">✓</span>Paid</div>
+        </div>
+        <div class="payment">
+          <div><div class="payment-amount">₦65,000</div><div class="payment-date">26 September 2024</div></div>
+          <div class="payment-status"><span class="payment-icon" aria-hidden="true">✓</span>Paid</div>
+        </div>
+        <div class="payment">
+          <div><div class="payment-amount">₦85,000</div><div class="payment-date">04 October 2024</div></div>
+          <div class="payment-status failed"><span class="payment-icon" aria-hidden="true">!</span>Failed</div>
+        </div>
+      </div>
+      <button class="pay-button" type="button">Pay balance</button>
+    </section>
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const toggle = document.querySelector('.theme-toggle');
+    toggle.addEventListener('click', () => {
+      const dark = root.dataset.theme !== 'dark';
+      root.dataset.theme = dark ? 'dark' : 'light';
+      toggle.setAttribute('aria-pressed', String(dark));
+      toggle.querySelector('span').textContent = dark ? 'Light mode' : 'Dark mode';
+    });
+  </script>
+</body>
+</html>

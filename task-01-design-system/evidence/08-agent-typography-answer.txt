@@ -1,0 +1,20 @@
+﻿QUESTION SENT TO THE AGENT
+Which typography style (the exact --type-* variable names) did you use for the order title "Agbada, two piece", the "Still owed" amount, and the "Pay balance" button label? State the file and line number for each. If any element uses a different style from what the design system intends, say so.
+
+AGENT ANSWER (verbatim)
+All three use the intended styles in `task-01-design-system/src/demo/index.html`:
+
+* Order title "Agbada, two piece"
+   * Element: line 372
+   * Style declaration: lines 113-121
+   * Variables: --type-display-small-fontfamily, --type-display-small-fontsize, --type-display-small-fontweight, --type-display-small-letterspacing, --type-display-small-lineheight
+* "Still owed" amount ₦85,000
+   * Element: line 391
+   * Shared metric declaration: lines 227-232
+   * Variables: --type-title-small-fontfamily, --type-title-small-fontsize, --type-title-small-fontweight, --type-title-small-letterspacing, --type-title-small-lineheight
+* "Pay balance" button label
+   * Element: line 415
+   * Button declaration: lines 327-339
+   * Variables: --type-label-large-fontfamily, --type-label-large-fontsize, --type-label-large-fontweight, --type-label-large-letterspacing, --type-label-large-lineheight
+
+No element uses a different style from the current design-system mapping documented in screen-style-map.md (task-01-design-system/docs/screen-style-map.md).
