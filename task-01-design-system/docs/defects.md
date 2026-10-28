@@ -31,3 +31,11 @@ Finding: The role `--color-shadow` resolves to black. The elevation tokens (line
 Cost in production: A developer who reads the role name will use black shadows, which contradicts the approved shadow colour.
 Fix: Point the role at the approved shadow colour, or remove it if the elevation tokens are the only shadow source.
 Status: Not fixed.
+
+## 5. Dark mode secondary container is bright, and its text role breaks the pattern
+Severity: Low
+Where: `task-01-design-system/src/styles/asohub-tokens.css`, line 242 (`--color-on-secondary-container` points at `secondary-0` in dark mode), line 32 (`secondary-30` is `#be8d43ff`). Light mode is line 174.
+Finding: In dark mode, `on-secondary-container` is black (`#000000`) on `#BE8D43`, a ratio of 7.080:1. It passes AA. The other dark containers use tone 90 text on tone 30. Secondary breaks that pattern because the secondary key colour (`#D4B483`) is light, so `secondary-30` is a light gold, not a dark surface.
+Cost in production: Dark mode secondary containers look bright against a dark interface and may feel inconsistent with the primary and tertiary containers.
+Fix: Rebuild the secondary palette so tones 0 to 30 are darker, or point the dark container at a darker tone such as `secondary-20`, then retest contrast.
+Status: Not fixed. Passes AA today.
