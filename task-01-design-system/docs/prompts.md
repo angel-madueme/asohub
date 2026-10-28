@@ -131,3 +131,45 @@ The agent created `scripts/audit-contrast.mjs`, `docs/contrast-table.md` and `do
 ### How I checked it
 
 I reran `node task-01-design-system/scripts/audit-contrast.mjs` and saved the output to `evidence/contrast-audit-run.txt`. The three low-margin pairs are all the primary button: Button: primary (Light), and the action alias pair
+
+## Prompt 3: Typography scale documentation
+
+Date: 2026-10-28
+Agent and model: Codex running in the Antigravity terminal, GPT-5.6-Luna medium
+
+### Prompt as sent
+
+```
+Document AsoHub's typography scale from task-01-design-system/src/styles/asohub-tokens.css and task-01-design-system/evidence/06-tokens-complete.json.
+
+LOCATION: Work only inside task-01-design-system/. Do not run any git commands. Do not modify the CSS, the JSON files, or any script. Write only docs/type-scale.md and docs/type-scale.csv.
+
+TASKS:
+1. Parse all 15 typography styles (display, headline, title, body, label, each large, medium and small).
+2. For every style output: CSS variable names, font family, font weight, font size (px), letter spacing (px), line height (px), and the line-height ratio (line height divided by font size, to 3 decimals).
+3. Flag any ratio that is not 1.4, 1.5 or 1.6. Do not round to hide a mismatch.
+4. Add a column for the multiplier used (1.4, 1.5 or 1.6) and group the table by role. Report the multiplier per role, and note any role where the sizes use different multipliers.
+5. Print the exact font family string from the CSS, and state whether it matches the family name used in the JSON.
+6. State which letter-spacing values are tighter than -0.25px, and which role each belongs to.
+7. Add the Material 3 baseline values for Display Large (57px, -0.25px, 64px) and Body Medium (14px, 20px) only as a comparison row, labelled as Material baseline from reference, not from our files.
+8. Include the CSS line numbers where each style is defined.
+9. Do not invent values. If a value is missing in the CSS or JSON, say so.
+10. Record the script (if you write one), the exact command run, and its output, so I can rerun it. Save any script in scripts/.
+
+REPORT: number of styles parsed, any ratio outside 1.4/1.5/1.6, any mismatch between CSS and JSON, and any assumption you made.
+Ask me when anything is unclear. Do not assume.
+```
+
+### What happened
+
+The agent created `docs/type-scale.md` and `docs/type-scale.csv`. It parsed 15 styles, found 0 ratios outside 1.4, 1.5 and 1.6, and found 0 CSS and JSON mismatches. Only Display Large (-0.6px) and Display Medium (-0.4px) are tighter than -0.25px. No role mixes multipliers. It used a one-line Node command, not a saved script, and modified no source files.
+
+### How I checked it
+
+The one-line command was rerun on my machine and its output saved to `evidence/type-scale-run.txt`. The Display Large values (48px, -0.60px, 67.2px) match `divergences.md`.
+
+### What I found and noted
+
+- The CSS font family is `'Source Sans Pro'`. Google Fonts now publishes this family as "Source Sans 3", so the font may fail to load by that name. Logged in `defects.md`, entry 6, to verify in Task 2.
+- The Material baseline rows come from my prompt, not from Material's source. They are reference-only.
+- The agent produced numbers but no reasoning. The reasons for each multiplier and tracking value were added to `type-scale.md` by hand.
