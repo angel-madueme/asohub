@@ -95,3 +95,45 @@ One export mistake mattered. Exporting without Figma variables omitted the whole
 Handoff also needs proof that the code consumed the design. I searched the code for raw colours, checked computed values in the browser, and asked the agent which styles it used. That found fonts falling back to Times New Roman, which the tokens alone would never have shown.
 
 Gaps remain. Shadow colour is a fixed hex outside the token system, and the font name needs an alias.
+
+## 9. Why do AI-generated interfaces tend to look generic, and what specifically do you hand an agent to stop it?
+
+An agent with no constraints produces the most likely interface for the request. That is the correct output for an unspecified prompt, so it looks generic by design.
+
+My Stage A test showed it. I asked for an order screen and gave no system. The agent chose Georgia and Trebuchet MS, a terracotta card, a near-black button and 15 hex colours of its own. My brand olive `#727C3D` appeared nowhere.
+
+What stops it is input the agent can actually read, plus rules it must follow. I gave it `asohub-tokens.css`, `colour-roles.md` and `type-scale.md`, and told it to use only `--color-*` roles and `--type-*` variables, never primitives or raw values, and to ask when files disagree.
+
+Then I verified it. The raw-value search found nothing outside the tokens file, and I asked the agent which styles it used for three elements, with line numbers. Handing it the system is not enough. Fonts still fell back to Times New Roman until I checked DevTools.
+
+## 10. Your line height for display large is a specific number. Why that number and not one step either side of it? What would you lose with each?
+
+Display Large is 48px with a 67.2px line height, a 1.4 multiplier.
+
+The assessment allows 1.4, 1.5 or 1.6, so the only step up is 1.5, which gives 72px. That adds 4.8px between lines. I would lose vertical space: multi-line headlines get taller and push content further down on small phones. I would gain looser, airier headlines, which Source Serif 4 does not need at this size.
+
+There is no step below 1.4 inside the formula. A tighter value would pull lines together, which can look cramped and risks descenders touching ascenders in a semibold serif. A single-line heading would gain nothing either way.
+
+1.4 keeps headlines cohesive and compact while giving the serif enough room. Display Large is also unused on my demo screen, which uses Display Small (32px, 44.8px line height), so this choice is untested in a real layout.
+
+Line height changes vertical space only. Wrapping depends on width, font metrics and tracking.
+
+## 11. Point at one place in your own token structure that you would build differently if you started again. Say what you would do instead and what it would cost.
+
+The shadow colour.
+
+Every semantic colour is an alias to a palette primitive, but the three elevation tokens hold a fixed hex, `#4c544b` with alpha, in `asohub-tokens.css` lines 384 to 386. I did this because binding the Neutral/30 variable in Figma overrode my opacity settings.
+
+The cost showed up twice. A palette change would leave shadows stale while everything else follows, which is the failure my regression test demonstrated. And in dark mode the shadows read as lighter glows, because `#4C544B` is lighter than the dark surfaces.
+
+I would bind the colour to a palette variable, set opacity separately, and add dark mode elevation tokens darker than the surface. Cost: re-export the JSON, regenerate the CSS, and rerun the contrast audit, the type check and the demo screen. The `--color-shadow` role also points at black, so I would remove or realign it.
+
+## 12. Wrong-answer analysis. "I set up design tokens by exporting the hex values from Figma into a CSS file, so every colour in the codebase comes from one place. That makes it a single source of truth."
+
+This sounds right and is not. Exporting hex values puts them in one file, but it does not make anything refer to that file.
+
+What is missing is the reference chain and enforcement. Exported hex values are primitives, not roles. Nothing says what each colour is for, there is no light and dark mapping, and nothing stops a developer or an agent from pasting a hex straight into a component.
+
+In month four, a developer hardcodes a colour for a quick fix. The brand colour then changes in Figma, the file is re-exported, and every token follows except the pasted ones. The interface drifts and no one notices. My regression test showed this: one hardcoded role stayed olive while the rest followed.
+
+A real single source of truth needs semantic roles that alias primitives, components that use only roles, a generated CSS file, and a check that fails on raw values. I built that check, `check-token-usage.mjs`.
