@@ -1,4 +1,4 @@
-# Colour roles
+﻿# Colour roles
 
 ## Brand colour: where it came from
 
@@ -31,7 +31,7 @@ This adopts Material's tonal naming conventions but **does not reproduce Materia
 
 ## Before and after pinning
 
-- **Before pinning:** `[FILL: read the exact Primary/40 hex from evidence/01-palette-before-pin.png and compare it with #727C3D.]` The first generated palette had a tone-40 mismatch, as identified during the Figma Agent workflow.
+- **Before pinning:** Primary/40 in `evidence/01-palette-before-pin.png` was `#7E8943`, not the approved `#727C3D`. The first generated palette had a tone-40 mismatch, as identified during the Figma Agent workflow.
 - **After pinning:** Every palette's tone 40 was regenerated to equal its approved key colour. Primary/40 is exactly `#727C3D`, and the other tones were rebuilt around it (`evidence/02-palette-after-pin.png`).
 
 The practical difference is that the before-pin reference did not reliably preserve the approved colour at tone 40. The after-pin system makes the selected colour the explicit anchor. This account reflects the Figma workflow, not a claim that Material's HCT pinning tool was used.
