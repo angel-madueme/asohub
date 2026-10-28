@@ -87,7 +87,7 @@ The agent created `scripts/tokens-to-css.mjs`, `scripts/check-token-usage.mjs`, 
 
 ### How I checked it
 
-I reran both scripts on my machine and both exited with code 0. `git status` showed only new files, so the two JSON files were not modified. The output of the check script is in `evidence/07-raw-value-search.txt`. It is clean but trivial, because no UI exists yet. I will rerun it after the agent builds a screen.
+I reran both scripts on my machine and both exited with code 0. `git status` showed only new files, so the two JSON files were not modified. The output of the check script is in `evidence/07-raw-value-search.txt`. I reran it after the demo screen was built and it still passed.
 
 ### What I changed, and what I found
 
@@ -215,4 +215,6 @@ I searched `asohub-tokens.css` for the 15 hex values and none matched, so the ag
 
 - My first screenshot was cropped and about 330 px wide, so I retook it at 390 px.
 - The invented content (order number, amounts, 2024 dates) is demo data, not
+
+
 

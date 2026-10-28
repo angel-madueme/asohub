@@ -1,4 +1,4 @@
-# Defects
+﻿# Defects
 
 ## 1. Shadow colour is a hardcoded hex, not a token reference
 Severity: Medium
@@ -46,4 +46,5 @@ Where: `task-01-design-system/src/styles/asohub-tokens.css`, lines 335 to 379 (T
 Finding: Google Fonts now publishes this family as "Source Sans 3". The tokens still say "Source Sans Pro", so a font request using the token name may fail and the browser would fall back to a default font without any error.
 Cost in production: Body, title and label text could render in the wrong font while the design system claims otherwise.
 Fix: Load Source Sans 3 and alias it to the token name with `@font-face`, or self-host the font under the token name. Verify with browser dev tools that the intended font is applied.
-Status: Not verified yet. Check when fonts are loaded in Task 2.
+Status: Confirmed in Stage B. Both families fell back to Times New Roman until a Google Fonts link was added. The serif was fixed by the link alone. The sans needed an alias with a url() source, because local() failed on a machine without the font installed. Both verified in DevTools as Network resource. Evidence: `evidence/font-fallback-times-new-roman.png`, `evidence/font-fixed-source-serif-4.png`, `evidence/font-fixed-source-sans-3.png`. Remaining risk: the fix lives in the demo page only, so the real app must load the fonts the same way.
+
