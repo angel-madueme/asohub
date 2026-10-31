@@ -1,0 +1,62 @@
+﻿Analyzed AGENTS.md:L1-91
+Analyzed business-brief.md:L1-21
+Analyzed colour-roles.md:L1-147
+Analyzed type-scale.md:L1-74
+Analyzed shadows.md:L1-57
+Analyzed defects.md:L1-50
+Analyzed asohub-tokens.css:L1-60
+Analyzed asohub-tokens.css:L300-387
+Ran list root directory
+Analyzed .env.example:L1-26
+Ran check task 2 directory
+Ran check task 2 docs
+Analyzed scaffold-prompt.md:L1
+Ran check task 1 scripts
+Analyzed check-token-usage.mjs:L1-48
+Analyzed index.html:L1-60
+
+AsoHub gives tailoring customers clarity on outfit progress and outstanding balances from any mobile device or desktop browser.
+
+### Summary of understanding
+
+The task sets up the repository scaffold and one clean home page. Work remains strictly on branch `task-2-scaffold`. No git commands will run. No databases, authentication, or unrequested packages will be added. All styling relies exclusively on design tokens.
+
+### Plan
+
+1. Set up Next.js with TypeScript and the App Router directly in the current repository root.
+2. Preserve `README.md` and `AGENTS.md` without modification.
+3. Copy `task-01-design-system/src/styles/asohub-tokens.css` into `src/styles/asohub-tokens.css` without changes, and import it once in the root layout.
+4. Load `Source Serif 4` and `Source Sans 3` from Google Fonts. Map the `Source Sans Pro` token family to the `Source Sans 3` web font files using `@font-face` with a `url()` source.
+5. Create a mobile-first home page in `src/app/page.tsx` containing:
+   - The studio name: **AsoHub**
+   - The tagline: **Made to measure. Tracked to the last stitch.** (Display typography style)
+   - The supporting line: **See your outfit's progress, what you've paid and what you still owe, all in one place.** (Body typography style)
+   - The primary button: **Get started** (Label typography style, `--color-action-primary`, `--color-action-on-primary`)
+   - A theme toggle to test `data-theme="dark"` on the `html` element
+6. Update `.env.example` to list only the App group required right now, formatted with names only and plain group headers.
+7. Create `scripts/check-token-usage.mjs` to scan the root `src/` directory for raw hex, rgb, or hsl values and `--ref-color-*` references outside `src/styles/asohub-tokens.css`.
+8. Add `check:tokens` to `package.json` to run the token audit script.
+
+### Files to create or change
+
+- `package.json`: Next.js, React, React-DOM, TypeScript dependencies, dev scripts, and `check:tokens` command.
+- `tsconfig.json`: TypeScript configuration for Next.js App Router.
+- `next.config.mjs`: Next.js configuration.
+- `src/styles/asohub-tokens.css`: exact copy of `task-01-design-system/src/styles/asohub-tokens.css`.
+- `src/app/globals.css`: global CSS rules, font-face alias declarations, and token-based base elements.
+- `src/app/layout.tsx`: root layout with Google Fonts links, token import, and HTML structure.
+- `src/app/page.tsx`: mobile-first home page with studio name, tagline, description, button, and theme toggle.
+- `src/app/theme-toggle.tsx`: client toggle component managing `data-theme="dark"` on the `html` element.
+- `.env.example`: updated to show only the active `# App` settings.
+- `scripts/check-token-usage.mjs`: script scanning root `src/` for forbidden raw color values or primitive token references.
+
+### Assumptions
+
+- Node.js and npm will install `next`, `react`, `react-dom`, `typescript`, `@types/node`, `@types/react`, and `@types/react-dom`.
+- The home page button requires no action or routing at this scaffold phase.
+- The tagline uses `--type-display-medium-*` on mobile screens and `--type-display-large-*` on wider viewports.
+- The supporting line uses `--type-body-large-*`.
+- The button uses `--type-label-large-*`.
+- `.env.example` requires only the App configuration group (`APP_URL` and `PORT`) at this stage.
+
+Work stops here until you reply with "approved".

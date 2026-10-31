@@ -1,0 +1,141 @@
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: local('Source Sans 3'), url('https://fonts.gstatic.com/s/sourcesans3/v20/nwpStKy2OAdR1K-IwhWudF-R3w8aZQ.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: local('Source Sans 3'), url('https://fonts.gstatic.com/s/sourcesans3/v20/nwpStKy2OAdR1K-IwhWudF-R3w8aZQ.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  font-family: var(--type-body-medium-fontfamily);
+  font-size: var(--type-body-medium-fontsize);
+  font-weight: var(--type-body-medium-fontweight);
+  letter-spacing: var(--type-body-medium-letterspacing);
+  line-height: var(--type-body-medium-lineheight);
+}
+
+button {
+  font-family: inherit;
+  border: 0;
+  cursor: pointer;
+}
+
+.shell {
+  width: min(calc(100% - 32px), 640px);
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0 40px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 32px;
+}
+
+.brand {
+  font-family: var(--type-title-large-fontfamily);
+  font-size: var(--type-title-large-fontsize);
+  font-weight: var(--type-title-large-fontweight);
+  letter-spacing: var(--type-title-large-letterspacing);
+  line-height: var(--type-title-large-lineheight);
+  color: var(--color-primary);
+}
+
+.themeToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-surface-variant);
+  color: var(--color-on-surface-variant);
+  padding: 8px 14px;
+  border-radius: 9999px;
+  font-family: var(--type-label-medium-fontfamily);
+  font-size: var(--type-label-medium-fontsize);
+  font-weight: var(--type-label-medium-fontweight);
+  letter-spacing: var(--type-label-medium-letterspacing);
+  line-height: var(--type-label-medium-lineheight);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  padding: 40px 0;
+}
+
+.tagline {
+  margin: 0 0 16px;
+  font-family: var(--type-display-medium-fontfamily);
+  font-size: var(--type-display-medium-fontsize);
+  font-weight: var(--type-display-medium-fontweight);
+  letter-spacing: var(--type-display-medium-letterspacing);
+  line-height: var(--type-display-medium-lineheight);
+  color: var(--color-on-background);
+}
+
+@media (min-width: 640px) {
+  .tagline {
+    font-family: var(--type-display-large-fontfamily);
+    font-size: var(--type-display-large-fontsize);
+    font-weight: var(--type-display-large-fontweight);
+    letter-spacing: var(--type-display-large-letterspacing);
+    line-height: var(--type-display-large-lineheight);
+  }
+}
+
+.description {
+  margin: 0 0 32px;
+  font-family: var(--type-body-large-fontfamily);
+  font-size: var(--type-body-large-fontsize);
+  font-weight: var(--type-body-large-fontweight);
+  letter-spacing: var(--type-body-large-letterspacing);
+  line-height: var(--type-body-large-lineheight);
+  color: var(--color-secondary-text);
+  max-width: 520px;
+}
+
+.actionButton {
+  align-self: flex-start;
+  background-color: var(--color-action-primary);
+  color: var(--color-action-on-primary);
+  font-family: var(--type-label-large-fontfamily);
+  font-size: var(--type-label-large-fontsize);
+  font-weight: var(--type-label-large-fontweight);
+  letter-spacing: var(--type-label-large-letterspacing);
+  line-height: var(--type-label-large-lineheight);
+  padding: 14px 28px;
+  border-radius: 8px;
+  box-shadow: var(--elevation-soft);
+  text-decoration: none;
+  display: inline-block;
+}
+

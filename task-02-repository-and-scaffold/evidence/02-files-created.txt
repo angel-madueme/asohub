@@ -1,0 +1,12 @@
+﻿ M AGENTS.md
+ M task-02-repository-and-scaffold/docs/scaffold-prompt.md
+?? next-env.d.ts
+?? next.config.mjs
+?? package-lock.json
+?? package.json
+?? scripts/
+?? src/
+?? task-02-repository-and-scaffold/evidence/02-files-created.txt
+?? tsconfig.json
+
+--- Agent's own file list (from its report) ---

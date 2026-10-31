@@ -1,0 +1,13 @@
+﻿> asohub@0.1.0 dev
+> next dev
+
+Next.js 16.4.3 (Turbopack)
+- Local:   http://localhost:3000
+- Network: http://10.32.179.134:3000
+Ready in 13.9s
+Warning: Next.js ignored package-lock.json in C:\Users\AngelMadueme because it is outside the current Git repository (C:\Users\AngelMadueme\Desktop\Asohub).
+Running next.config.mjs took 302ms
+Compiling / ...
+GET / 200 in 2.8s (next.js: 2.2s, application-code: 687ms)
+Blocked cross-origin request to Next.js dev resource /_next/hmr from "10.32.179.134".
+GET / 200 in 113ms (next.js: 8ms, application-code: 105ms)

@@ -1,0 +1,5 @@
+﻿First page load (dev server, http://localhost:3000)
+GET / 200 in 2.8s (next.js: 2.2s, application-code: 687ms)
+
+Reload
+GET / 200 in 113ms (next.js: 8ms, application-code: 105ms)
