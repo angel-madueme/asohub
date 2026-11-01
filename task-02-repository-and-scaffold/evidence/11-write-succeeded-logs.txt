@@ -1,0 +1,9 @@
+﻿Time: 11/01/2026 6:15 PM and 6:24 PM
+What I did: submitted the fitting request form at http://localhost:3000/request-fitting twice, with made-up names and phone numbers. Row 3 was Angel, Corporate wear. Row 4 was Jane, Alteration.
+Server log from window 1 (copied exactly):
+ POST /api/fitting-requests 201 in 127ms (next.js: 15ms, application-code: 112ms)
+ POST /api/fitting-requests 201 in 104ms (next.js: 11ms, application-code: 94ms)
+My reading: these are the logs for rows 3 and 4, in the order I submitted them. I did not copy the timestamps with the lines, so the pairing is from the order.
+Status code: 201 means a new record was created. There is no 4xx or 5xx in these two.
+What I saw on screen for row 4: a green message with a check mark that said "Your fitting request was saved. Your request ID is 4."
+Earlier note: my first two submissions used a real phone number, so I deleted those rows and did not keep their evidence. The very first log line, the 201 in 2.8s, was for that deleted first row. It was slower because the route and the database connection were still starting up.

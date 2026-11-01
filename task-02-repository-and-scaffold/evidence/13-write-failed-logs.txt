@@ -1,0 +1,19 @@
+﻿Time: 11/01/2026 6:53 PM
+What I did: renamed DATABASE_URL to DATABASE_URL_OFF in .env, restarted the server with npm run dev, then submitted the form once with made-up values (Simon, 0700000000, Wedding set).
+What the user saw: a pink box with an "!" icon and the words "Your fitting request could not be saved. Please try again." The screen did not say saved.
+Server log from window 1 (copied exactly):
+Could not save fitting request. Error: DATABASE_URL is not set.
+    at getDb (src\lib\db.ts:13:13)
+    at POST (src\app\api\fitting-requests\route.ts:39:30)
+  11 |
+  12 |     if (!connectionString) {
+> 13 |       throw new Error('DATABASE_URL is not set.');
+     |             ^
+  14 |     }
+  15 |
+  16 |     const adapter = new PrismaPg({
+ POST /api/fitting-requests 500 in 1904ms (next.js: 199ms, application-code: 1705ms)
+Status code: 500 means the server could not do the job. There is no 201 anywhere in this run, so no row was created.
+How long it took: 1904ms. I expected under a second or two. I think the first request after a restart is slow because Next.js compiles the route, but I did not prove that.
+Row count after the failed submit: 2. It was 2 before, so nothing was written. Checked with SELECT count(*) FROM fitting_requests; at the end of the test.
+Row count after the failed submit: 2. It was 2 before, so nothing was written. Checked with SELECT count(*) FROM fitting_requests; at the end of the test.

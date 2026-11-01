@@ -1,0 +1,9 @@
+﻿ id | full_name |    phone    |  outfit_type   |       created_at        
+----+-----------+-------------+----------------+-------------------------
+  3 | Angel     | 08101234567 | Corporate wear | 2026-11-01 17:15:28.915
+  4 | Jane      | 08100034567 | Alteration     | 2026-11-01 17:24:48.825
+(2 rows)
+
+
+Note: created_at is stored in UTC. Lagos is one hour ahead, so row 3 (17:15 UTC) was made at 6:15 PM Lagos time and row 4 (17:24 UTC) at 6:24 PM.
+Note: the table starts at id 3 because I deleted my first two test rows, which held a real phone number. Deleting rows does not reset the id counter.

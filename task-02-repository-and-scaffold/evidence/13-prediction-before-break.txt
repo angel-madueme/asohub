@@ -1,0 +1,12 @@
+﻿MY PREDICTION BEFORE BREAKING THE CONNECTION (written before I ran the test)
+Time: 11/01/2026 18:51:24
+
+How I will break it: I will rename DATABASE_URL in my .env file, then restart the server.
+
+What I expect the screen to show: An error message with an icon. It will say my request could not be saved. It will not say saved, because the form only shows success when the server sends back 201.
+
+What I expect window 1 to log: A line that says POST /api/fitting-requests 500. Above it, an error message that says DATABASE_URL is not set.
+
+How long I expect it to take: Very fast, under a second or two. The app sees right away that the setting is missing, so it does not wait for the database.
+
+Why I think so: In route.ts, the save is on line 39 and the success reply is on line 44. If the save fails, the code skips the success reply and goes to the error reply on line 49.
