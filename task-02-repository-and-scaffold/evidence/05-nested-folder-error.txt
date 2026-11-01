@@ -1,0 +1,11 @@
+﻿Folder I ran from: C:\Users\AngelMadueme\Desktop\nested-test
+Time: 11/01/2026 00:09:34
+Command: npm run dev
+npm error Missing script: "dev"
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: C:\Users\AngelMadueme\AppData\Local\npm-cache\_logs\2026-10-31T23_09_35_471Z-debug-0.log
+
+Note: the error was "Missing script: dev", not "file not found". npm did not look inside the asohub-app subfolder. When it finds no package.json in the folder you run from, it looks in parent folders.
+Check after the error: a package.json exists in my home folder, C:\Users\AngelMadueme (Test-Path printed True). I believe npm used that one, and it has no dev script. I did not prove this at the moment of the error, because Fix B had already put a package.json in nested-test by the time I ran npm prefix.

@@ -1,0 +1,33 @@
+﻿FIX A: change directory
+Folder I ran from: C:\Users\AngelMadueme\Desktop\nested-test\asohub-app
+Time: 11/01/2026 00:10:03
+
+> nested-demo@1.0.0 dev
+> echo dev server started
+
+dev server started
+
+FIX B: agent rescaffolded in place
+Folder I ran from: C:\Users\AngelMadueme\Desktop\nested-test
+Time: 11/01/2026 03:30:21
+
+> nested-demo@1.0.0 dev
+> echo dev server started
+
+dev server started
+
+FIX B: agent rescaffolded in place
+Folder I ran from: C:\Users\AngelMadueme\Desktop\nested-test
+Time: 11/01/2026 03:31:20
+
+> nested-demo@1.0.0 dev
+> echo dev server started
+
+dev server started
+
+Agent's own list of moved files (from its report):
+- package.json (moved from asohub-app/package.json to ./package.json)
+The agent also removed the empty asohub-app folder.
+I checked the result myself with Get-ChildItem and by running npm run dev.
+
+Note: the Fix B capture was run twice (03:30:21 and 03:31:20). Both runs gave the same result. The second run was an accident, not a second test.
