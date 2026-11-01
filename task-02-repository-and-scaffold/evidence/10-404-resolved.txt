@@ -1,0 +1,36 @@
+﻿DIAGNOSIS (done before asking any agent)
+Check 1: is the server running? (is something listening on port 3000)
+  TCP    0.0.0.0:3000           0.0.0.0:0              LISTENING       27988
+  TCP    [::]:3000              [::]:0                 LISTENING       27988
+Check 2: is the URL right? I opened http://localhost:3000/
+Check 3: what does the terminal say? GET / returned 404 (see 09-404-error.txt)
+Check 4: does the file for this route exist? Listing src/app:
+
+Name            
+----            
+globals.css     
+layout.tsx      
+page.tsx.off    
+theme-toggle.tsx
+
+
+
+Check 5: what does git say changed?
+ D src/app/page.tsx
+?? src/app/page.tsx.off
+?? task-02-repository-and-scaffold/evidence/09-404-error.txt
+?? task-02-repository-and-scaffold/evidence/09-404-page.png
+?? task-02-repository-and-scaffold/evidence/10-404-resolved.txt
+
+CONCLUSION: The server and URL are fine. The 404 happens because src/app/page.tsx does not exist (it is named page.tsx.off), so Next.js has no page for the route "/". Git shows the same thing: page.tsx deleted, page.tsx.off new.
+
+FIX: renamed src/app/page.tsx.off back to page.tsx
+Time: 11/01/2026 14:18:17
+Result after the fix: status 200 time 0.335261s
+
+Server log lines from window 1 after the fix (copied from my terminal):
+GET / 200 in 195ms (next.js: 16ms, application-code: 179ms)
+GET / 200 in 91ms (next.js: 23ms, application-code: 68ms)
+My reading: one of these is my curl request and the other is a browser reload. I cannot tell which from the log.
+
+CONCLUSION: The server and URL were fine. The 404 happened because src/app/page.tsx did not exist (it was named page.tsx.off), so Next.js had no page for the route "/". Git showed the same thing: page.tsx deleted, page.tsx.off new. Renaming the file back returned the status to 200.

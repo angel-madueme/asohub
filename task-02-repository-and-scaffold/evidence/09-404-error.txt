@@ -1,0 +1,10 @@
+﻿Time: 11/01/2026 14:02:24
+What I did: renamed src/app/page.tsx to page.tsx.off
+Command: curl.exe -s -o NUL -w 'status %{http_code} time %{time_total}s' http://localhost:3000/
+Result: status 404 time 0.111644s
+Server log lines from window 1 (copied from my terminal):
+Before the rename:  GET / 200 in 1540ms (next.js: 923ms, application-code: 617ms)
+After the rename:   GET / 404 in 779ms (next.js: 719ms, application-code: 60ms)
+                    GET / 404 in 197ms (next.js: 58ms, application-code: 139ms)
+                    GET / 404 in 106ms (next.js: 38ms, application-code: 68ms)
+My reading: the first two 404s were browser reloads. The last one matches my curl request (curl reported 0.1116s). This is an inference from the times.
