@@ -1,0 +1,74 @@
+﻿Source note: the agent's plan for the database form, as shown before I approved it. Copied word for word from the agent's reply.
+Approval: I approved it with changes (localhost-only port, postgres:16, .gitignore lines shown first, migrate dev with a name, stop if the install fails, check scripts after type: module).
+
+The required files and local Next.js route handler docs have been read. No conflicting instructions were found. Reading `.git/HEAD` confirmed `task-2-database-form`; no git commands ran. No project files have changed.
+This task adds one fitting request form, one POST endpoint, and one database model. Success will appear only after Prisma finishes saving the row.
+Prisma 7.10.1 is the planned version, confirmed through npm. Prisma's release page currently lists Prisma 8 as a release candidate, so the install will pin 7.10.1. [Release status](https://www.prisma.io/docs/orm/release-status)
+Compared with older guides:
+
+* Database connection configuration belongs in root-level `prisma.config.ts`.
+* The `prisma-client` generator requires an output path. Yours will be `generated/prisma/`, outside `src/`.
+* PostgreSQL requires `@prisma/adapter-pg`. That package brings the `pg` driver.
+* Prisma does not automatically load environment variables. The config will explicitly read your existing `.env` using Node's built-in loader. Next.js loads environment variables for the route.
+* `package.json` will declare `"type": "module"`.
+
+These follow the [Prisma 7 guide](https://www.prisma.io/docs/guides/upgrade-prisma-orm/v7) and [generator documentation](https://www.prisma.io/docs/orm/v7/prisma-schema/overview/generators).
+The plan after approval:
+
+1. Install pinned Prisma packages with npm, disabling install scripts so installation cannot generate the client.
+2. Add PostgreSQL Compose configuration with `asohub-db`, port `5433:5432`, environment references, and a named volume.
+3. Write the single-model schema, Prisma config, and client singleton.
+4. Build the endpoint with JSON/type checks, awaited insertion, and the required responses.
+5. Build the accessible form, sending state, and text-plus-icon feedback using existing tokens.
+6. Link "Get started" to the form and extend the existing database environment group.
+7. Run `npm run check:tokens`, review the implementation, and report manual setup commands and verification limits.
+
+Files to create:
+
+* `docker-compose.yml`
+* `prisma/schema.prisma`
+* `prisma.config.ts`
+* `src/lib/db.ts`
+* `src/app/api/fitting-requests/route.ts`
+* `src/app/request-fitting/page.tsx`
+* `src/app/request-fitting/page.module.css`
+
+Files to change:
+
+* `package.json`
+* `package-lock.json`
+* `.gitignore`
+* `.env.example`
+* `src/app/page.tsx`
+
+Assumptions:
+
+* PostgreSQL 17 is suitable for this local database.
+* Approval includes the required Prisma PostgreSQL adapter.
+* API fields use `full_name`, `phone`, and `outfit_type`; success returns `id` and `created_at`.
+* "Missing" means absent or not a string. Empty strings and whitespace remain accepted because content validation comes later.
+* You will supply matching database settings privately and run Docker, client generation, and migration commands.
+* Existing font loading stays in place. Rendered fonts have not been verified.
+* A real database save and a complete build cannot be verified before you generate the client and create the table.
+
+Per your Step 2 instruction, work stops here until you say "approved."
+
+DECISION: install scripts were off, so Prisma's engine did not download. The agent stopped and asked to run one named script.
+I checked before approving:
+- The script exists. It is a launcher that loads dist/scripts/postinstall.js. Its other branch only runs for the version 0.0.0, which is not mine.
+- The engines folder had no engine binary, so the agent was right.
+- npm ls prisma showed prisma@7.10.1.
+I approved that one script only, not install scripts in general.
+
+MY APPROVAL REPLY (as sent to the agent)
+
+Approved, with these changes.
+
+1. In docker-compose.yml, bind the port to localhost only: "127.0.0.1:5433:5432".
+2. Use the postgres:16 image, not 17.
+3. Before you write .gitignore, show me the exact lines you will add. Add only generated/prisma/. Keep .env ignored. Do not ignore .env.example, docs, evidence or any other project file.
+4. Give me the migration command as: npx prisma migrate dev --name create_fitting_requests. Give me the generate command and the Docker command too, in the order I must run them.
+5. If the install fails or the migration engine is missing because install scripts are off, stop and tell me. Do not re-run the install with scripts on without asking.
+6. After adding "type": "module", confirm that next.config.mjs and scripts/check-token-usage.mjs still work, and run npm run check:tokens.
+
+All other rules stay. Do not run git commands, docker commands or any prisma command. In your report, list every file, every assumption, the exact manual commands in order, the status code for each case, and an audit against each instruction.

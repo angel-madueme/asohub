@@ -1,0 +1,7 @@
+﻿Time: 11/01/2026 5:01pm
+Problem: docker compose up -d failed on port 5433 with "bind: An attempt was made to access a socket in a way forbidden by its access permissions".
+First guess (wrong): Windows had reserved the port. I checked netsh excludedportrange and 5433 was not in any range.
+Real cause: process 7064, named postgres, was already listening on 5433 (found with netstat -ano | findstr :5433). Get-Service showed it is the Windows service postgresql-x64-18, "PostgreSQL Server 18", status Running. It is a PostgreSQL installed on Windows, not a Docker container.
+Follow-on error: npx prisma migrate dev failed with P1000 Authentication failed. Prisma had connected to that Windows PostgreSQL, where my asohub user does not exist. The password was not wrong.
+Check before moving: port 5434 had no listener and was not in a reserved range.
+Fix: moved the database to port 5434 in docker-compose.yml and DATABASE_URL. I left the postgresql-x64-18 service running because I do not know what depends on it.

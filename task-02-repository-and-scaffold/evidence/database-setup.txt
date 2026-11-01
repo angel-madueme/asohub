@@ -1,0 +1,29 @@
+﻿Time: 11/01/2026 17:16:36
+Command: docker ps
+CONTAINER ID   IMAGE                          COMMAND                  CREATED         STATUS                 PORTS                                         NAMES
+efe0b1e4ec9d   postgres:16                    "docker-entrypoint.sΓÇª"   9 minutes ago   Up 9 minutes           127.0.0.1:5434->5432/tcp                      asohub-db
+5c30ea2bdb3b   roami-payment-roami-postgres   "docker-entrypoint.sΓÇª"   6 weeks ago     Up 3 hours (healthy)   0.0.0.0:5555->5432/tcp, [::]:5555->5432/tcp   roami-payment-postgres
+fdedbb224d20   postgres:16                    "docker-entrypoint.sΓÇª"   6 weeks ago     Up 3 hours             0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp   subvio-db
+
+Command: docker exec asohub-db psql -U asohub -d asohub -c "\dt"
+              List of relations
+ Schema |        Name        | Type  | Owner  
+--------+--------------------+-------+--------
+ public | _prisma_migrations | table | asohub
+ public | fitting_requests   | table | asohub
+(2 rows)
+
+
+Migration folder:
+
+
+    Directory: C:\Users\AngelMadueme\Desktop\Asohub\prisma\migrations
+
+
+Mode                 LastWriteTime         Length Name                                             
+----                 -------------         ------ ----                                             
+d-----         11/1/2026   5:07 PM                20261101160736_create_fitting_requests           
+-a----         11/1/2026   5:07 PM            128 migration_lock.toml                              
+
+
+
