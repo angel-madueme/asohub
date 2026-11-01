@@ -1,0 +1,26 @@
+﻿Time: 11/01/2026 04:20:11
+Command: npx next dev -p 3000
+Γ¿» Failed to start server
+Error: listen EADDRINUSE: address already in use :::3000
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3000
+}
+[?25h
+
+--- Second capture, made while process 5364 holds the port (server started 4:19:53 AM) ---
+Time: 11/01/2026 04:22:31
+Command: npx next dev -p 3000
+Γ¿» Failed to start server
+Error: listen EADDRINUSE: address already in use :::3000
+    at new Promise (<anonymous>) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 3000
+}
+[?25h

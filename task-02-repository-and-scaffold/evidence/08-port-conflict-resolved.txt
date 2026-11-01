@@ -1,0 +1,48 @@
+﻿Time: 11/01/2026 04:22:57
+Command to find the process: netstat -ano | findstr :3000
+  TCP    0.0.0.0:3000           0.0.0.0:0              LISTENING       5364
+  TCP    [::]:3000              [::]:0                 LISTENING       5364
+
+Command to check what it is: Get-Process -Id 5364
+
+  Id ProcessName StartTime           
+  -- ----------- ---------           
+5364 node        11/1/2026 4:19:53 AM
+
+
+
+
+Command to end it: Stop-Process -Id 5364 -Force
+Port check after ending it (nothing LISTENING means the port is free):
+
+Clean restart after ending the process:
+
+> asohub@0.1.0 dev
+> next dev
+
+Γû▓ Next.js 16.4.3 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://10.220.120.134:3000
+Γ£ô Ready in 2.7s
+node.exe : ΓÜá Warning: Next.js ignored 
+package-lock.json in C:\Users\AngelMadueme 
+because it is outside the current Git 
+repository 
+(C:\Users\AngelMadueme\Desktop\Asohub).
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" 
+"C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (ΓÜ 
+   á Warning: Ne...esktop\Asohub).:String) [],  
+   RemoteException
+    + FullyQualifiedErrorId : NativeCommandErro 
+   r
+ 
+ To use this directory, set `turbopack.root` in 
+your Next.js config.
+
+Γ£ô Running next.config.mjs took 93ms
+
+ GET / 200 in 1877ms (next.js: 1069ms, application-code: 807ms)
