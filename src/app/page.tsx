@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ThemeToggle } from './theme-toggle';
 
 export default function HomePage() {
@@ -12,9 +13,9 @@ export default function HomePage() {
         <p className="description">
           See your outfit's progress, what you've paid and what you still owe, all in one place.
         </p>
-        <button type="button" className="actionButton">
+        <Link href="/request-fitting" className="actionButton">
           Get started
-        </button>
+        </Link>
       </main>
     </div>
   );

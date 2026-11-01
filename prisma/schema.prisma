@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model FittingRequest {
+  id          Int      @id @default(autoincrement())
+  full_name   String   @db.Text
+  phone       String   @db.Text
+  outfit_type String   @db.Text
+  created_at  DateTime @default(now())
+
+  @@map("fitting_requests")
+}

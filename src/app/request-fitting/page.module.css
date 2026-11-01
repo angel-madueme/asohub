@@ -1,0 +1,85 @@
+.page {
+  padding-top: 40px;
+  font-family: var(--type-body-medium-fontfamily);
+  font-size: var(--type-body-medium-fontsize);
+  font-weight: var(--type-body-medium-fontweight);
+  letter-spacing: var(--type-body-medium-letterspacing);
+  line-height: var(--type-body-medium-lineheight);
+}
+
+.title {
+  margin: 0 0 16px;
+  font-family: var(--type-headline-small-fontfamily);
+  font-size: var(--type-headline-small-fontsize);
+  font-weight: var(--type-headline-small-fontweight);
+  letter-spacing: var(--type-headline-small-letterspacing);
+  line-height: var(--type-headline-small-lineheight);
+}
+
+.intro {
+  margin: 0 0 32px;
+  color: var(--color-secondary-text);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px;
+  border: 1px solid var(--color-outline);
+  border-radius: 8px;
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  font-family: var(--type-body-medium-fontfamily);
+  font-size: var(--type-body-medium-fontsize);
+  font-weight: var(--type-body-medium-fontweight);
+  letter-spacing: var(--type-body-medium-letterspacing);
+  line-height: var(--type-body-medium-lineheight);
+}
+
+.field input:focus-visible,
+.field select:focus-visible,
+.submit:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.submit {
+  width: 100%;
+}
+
+.submit:disabled {
+  cursor: wait;
+}
+
+.feedback {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 24px 0 0;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+.success {
+  background-color: var(--color-success-container);
+  color: var(--color-on-success-container);
+}
+
+.error {
+  background-color: var(--color-error-container);
+  color: var(--color-on-error-container);
+}
